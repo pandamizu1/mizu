@@ -2,21 +2,29 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Box, Workflow, Video, Monitor, ArrowRight } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
+import { translations } from '../translations';
 import AboutSection from '../components/AboutSection';
 import ServicesSection from '../components/ServicesSection';
 import EducationSection from '../components/EducationSection';
 import SkillsSection from '../components/SkillsSection';
 
 const HomePage = () => {
+  const { language } = useLanguage();
+  const t = translations[language];
   const [currentText, setCurrentText] = useState(0);
-  const texts = ['Graphic Designer', 'Video Editor', '3D Product Designer'];
+  const texts = [
+    t.home.roles.graphicDesigner,
+    t.home.roles.videoEditor,
+    t.home.roles.productDesigner
+  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentText((prev) => (prev + 1) % texts.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [texts.length]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -54,10 +62,10 @@ const HomePage = () => {
             transition={{ duration: 0.5 }}
           >
             <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm mb-6">
-              Welcome to my portfolio
+              {t.home.welcome}
             </span>
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
-              Hi, I'm <span className="text-white/90">Pandu</span>
+              {t.home.greeting} <span className="text-white/90">Pandu</span>
             </h1>
             
             <div className="h-16 md:h-20 mb-6">
@@ -74,16 +82,15 @@ const HomePage = () => {
             </div>
             
             <p className="text-white/80 text-lg mb-8 max-w-xl">
-              Creating stunning visual experiences that captivate audiences
-              and elevate brands through design and motion.
+              {t.home.description}
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
               <Link to="/portfolio" className="btn-primary">
-                View My Work
+                {t.home.viewWork}
               </Link>
               <Link to="/contact" className="btn-secondary">
-                Get in Touch
+                {t.home.getInTouch}
               </Link>
             </div>
           </motion.div>
@@ -139,7 +146,7 @@ const HomePage = () => {
                   <p className="text-gray-600 mb-4">{work.description}</p>
                   <div className="flex items-center text-indigo-600 font-medium">
                     <Link to="/portfolio" className="flex items-center hover:underline">
-                      View Project <ArrowRight size={16} className="ml-1" />
+                      {t.home.viewWork} <ArrowRight size={16} className="ml-1" />
                     </Link>
                   </div>
                 </div>
@@ -149,7 +156,7 @@ const HomePage = () => {
 
           <div className="text-center mt-12">
             <Link to="/portfolio" className="btn-primary inline-flex items-center">
-              View All Projects <ArrowRight size={18} className="ml-2" />
+              {t.home.viewWork} <ArrowRight size={18} className="ml-2" />
             </Link>
           </div>
         </div>
@@ -168,7 +175,7 @@ const HomePage = () => {
             viewport={{ once: true }}
             className="text-3xl md:text-4xl font-bold mb-6"
           >
-            Ready to start a project?
+            {t.home.readyToStart}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -177,7 +184,7 @@ const HomePage = () => {
             viewport={{ once: true }}
             className="text-white/80 max-w-2xl mx-auto mb-8"
           >
-            Let's work together to bring your vision to life with stunning designs and engaging content.
+            {t.home.letWork}
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -186,7 +193,7 @@ const HomePage = () => {
             viewport={{ once: true }}
           >
             <Link to="/contact" className="btn-secondary bg-white/10 backdrop-blur-md text-white border-white/30 hover:bg-white/20">
-              Contact Me
+              {t.home.contactMe}
             </Link>
           </motion.div>
         </div>

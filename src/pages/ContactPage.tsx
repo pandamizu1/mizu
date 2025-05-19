@@ -1,8 +1,12 @@
 import { motion } from 'framer-motion';
 import { Mail, Phone, Instagram, Twitter, Youtube, Link as LinkIcon, MessageSquare, Copy, Linkedin, Bean as Behance } from 'lucide-react';
 import { useState } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
+import { translations } from '../translations';
 
 const ContactPage = () => {
+  const { language } = useLanguage();
+  const t = translations[language];
   const [copied, setCopied] = useState<string | null>(null);
 
   const handleCopy = (text: string, type: string) => {
@@ -20,9 +24,9 @@ const ContactPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Me</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">{t.contact.title}</h1>
             <p className="text-xl text-white/80 max-w-2xl">
-              Let's connect and create something amazing together.
+              {t.contact.subtitle}
             </p>
           </motion.div>
         </div>
@@ -38,14 +42,14 @@ const ContactPage = () => {
           <div className="glassmorphism rounded-2xl p-8 md:p-12 shadow-xl">
             <div className="space-y-8">
               <div>
-                <h2 className="text-2xl font-bold mb-6 text-white">Let's Connect</h2>
+                <h2 className="text-2xl font-bold mb-6 text-white">{t.contact.connect}</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="flex items-center p-4 bg-white/10 rounded-xl">
                     <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mr-4">
                       <Mail className="h-6 w-6 text-white" />
                     </div>
                     <div className="flex-1">
-                      <p className="text-white font-medium">Email</p>
+                      <p className="text-white font-medium">{t.contact.email}</p>
                       <div className="flex items-center justify-between">
                         <p className="text-white/70">pandutirta25@gmail.com</p>
                         <button 
@@ -59,7 +63,7 @@ const ContactPage = () => {
                     </div>
                     {copied === 'email' && (
                       <span className="ml-2 text-xs text-green-400 animate-fade-in-out">
-                        Copied!
+                        {language === 'en' ? 'Copied!' : 'Tersalin!'}
                       </span>
                     )}
                   </div>
@@ -74,7 +78,7 @@ const ContactPage = () => {
                       <MessageSquare className="h-6 w-6 text-white" />
                     </div>
                     <div className="flex-1">
-                      <p className="text-white font-medium">WhatsApp</p>
+                      <p className="text-white font-medium">{t.contact.whatsapp}</p>
                       <div className="flex items-center justify-between">
                         <p className="text-white/70">+62 877-3778-3462</p>
                         <button 
@@ -92,7 +96,7 @@ const ContactPage = () => {
                     </div>
                     {copied === 'whatsapp' && (
                       <span className="ml-2 text-xs text-green-400 animate-fade-in-out">
-                        Copied!
+                        {language === 'en' ? 'Copied!' : 'Tersalin!'}
                       </span>
                     )}
                   </a>
@@ -100,7 +104,7 @@ const ContactPage = () => {
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold mb-6 text-white">Social Media</h3>
+                <h3 className="text-xl font-semibold mb-6 text-white">{t.contact.socialMedia}</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   <a 
                     href="https://www.instagram.com/pandapediahome?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
@@ -178,8 +182,7 @@ const ContactPage = () => {
 
               <div className="text-center pt-8 border-t border-white/10">
                 <p className="text-white/70">
-                  I'm always interested in hearing about new projects and opportunities.
-                  Feel free to reach out through any of these channels!
+                  {t.contact.ready}
                 </p>
               </div>
             </div>
