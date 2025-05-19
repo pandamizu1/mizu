@@ -1,7 +1,125 @@
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Download, Award, Briefcase, GraduationCap, Users, Globe2 } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const CVPage = () => {
+  const { language } = useLanguage();
+
+  const content = {
+    en: {
+      title: "Professional Summary",
+      summary: "Creative multimedia designer and recent Information Technology graduate specializing in 3D visualization, video production, and graphic design. Proficient in industry-standard creative tools with a proven track record of delivering engaging visual content. Combines technical expertise with artistic vision to create compelling digital experiences that captivate audiences and elevate brands.",
+      experience: {
+        title: "Professional Experience",
+        freelance: {
+          title: "Freelance Multimedia Designer",
+          period: "2021 - 2023",
+          achievements: [
+            "Designed and produced visually compelling food packaging labels, enhancing brand visibility and market appeal",
+            "Created engaging social media content that increased client engagement rates by 40%",
+            "Developed custom invitation designs for various events, receiving consistent positive client feedback",
+            "Executed promotional campaigns for herbal products, contributing to increased digital presence"
+          ]
+        }
+      },
+      education: {
+        title: "Education",
+        university: {
+          degree: "Bachelor's Degree in Information Technology",
+          school: "Amikom University Yogyakarta",
+          thesis: "Thesis: \"3D Model Environment Design for the 3D Animation Film 'Unidentified Flying Object'\""
+        }
+      },
+      projects: {
+        title: "Notable Projects",
+        film: {
+          title: "3D Animated Short Film - IT Exhibition",
+          period: "2021 - 2022",
+          details: [
+            "Developed detailed 3D environments using advanced modeling techniques",
+            "Implemented complex texturing and lighting systems",
+            "Managed complete production pipeline from concept to final render"
+          ]
+        },
+        content: {
+          title: "Educational Content Creator",
+          period: "2024 - Present",
+          details: [
+            "Create and edit educational video content",
+            "Develop engaging narratives and visual storytelling",
+            "Manage complete video production workflow"
+          ]
+        }
+      },
+      technical: "Technical Proficiency",
+      languages: {
+        title: "Languages",
+        indonesian: "Indonesian",
+        english: "English",
+        native: "Native",
+        intermediate: "Intermediate"
+      },
+      downloadCV: "Download CV"
+    },
+    id: {
+      title: "Ringkasan Profesional",
+      summary: "Desainer multimedia kreatif dan lulusan Teknologi Informasi yang berspesialisasi dalam visualisasi 3D, produksi video, dan desain grafis. Mahir dalam menggunakan alat kreatif standar industri dengan rekam jejak yang terbukti dalam menghasilkan konten visual yang menarik. Menggabungkan keahlian teknis dengan visi artistik untuk menciptakan pengalaman digital yang memikat audiens dan mengangkat merek.",
+      experience: {
+        title: "Pengalaman Profesional",
+        freelance: {
+          title: "Desainer Multimedia Freelance",
+          period: "2021 - 2023",
+          achievements: [
+            "Mendesain dan memproduksi label kemasan makanan yang menarik secara visual, meningkatkan visibilitas merek dan daya tarik pasar",
+            "Membuat konten media sosial yang menarik yang meningkatkan tingkat keterlibatan klien sebesar 40%",
+            "Mengembangkan desain undangan khusus untuk berbagai acara, menerima umpan balik positif yang konsisten dari klien",
+            "Melaksanakan kampanye promosi untuk produk herbal, berkontribusi pada peningkatan kehadiran digital"
+          ]
+        }
+      },
+      education: {
+        title: "Pendidikan",
+        university: {
+          degree: "Sarjana Teknologi Informasi",
+          school: "Universitas Amikom Yogyakarta",
+          thesis: "Skripsi: \"Desain Model Lingkungan 3D untuk Film Animasi 3D 'Unidentified Flying Object'\""
+        }
+      },
+      projects: {
+        title: "Proyek Unggulan",
+        film: {
+          title: "Film Pendek Animasi 3D - Pameran IT",
+          period: "2021 - 2022",
+          details: [
+            "Mengembangkan lingkungan 3D detail menggunakan teknik pemodelan lanjutan",
+            "Mengimplementasikan sistem tekstur dan pencahayaan yang kompleks",
+            "Mengelola alur produksi lengkap dari konsep hingga hasil akhir"
+          ]
+        },
+        content: {
+          title: "Pembuat Konten Edukasi",
+          period: "2024 - Sekarang",
+          details: [
+            "Membuat dan mengedit konten video edukasi",
+            "Mengembangkan narasi dan penceritaan visual yang menarik",
+            "Mengelola alur kerja produksi video secara lengkap"
+          ]
+        }
+      },
+      technical: "Kemampuan Teknis",
+      languages: {
+        title: "Bahasa",
+        indonesian: "Bahasa Indonesia",
+        english: "Bahasa Inggris",
+        native: "Bahasa Ibu",
+        intermediate: "Menengah"
+      },
+      downloadCV: "Unduh CV"
+    }
+  };
+
+  const t = content[language];
+
   return (
     <div className="min-h-screen pt-16">
       {/* Hero Section */}
@@ -29,7 +147,9 @@ const CVPage = () => {
 
             <div>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">Pandu Tirta Buana</h1>
-              <p className="text-xl text-white/80 mb-4">Multimedia Designer & Content Creator</p>
+              <p className="text-xl text-white/80 mb-4">
+                {language === 'en' ? 'Multimedia Designer & Content Creator' : 'Desainer Multimedia & Pembuat Konten'}
+              </p>
               
               {/* Contact Info in Hero */}
               <div className="flex flex-col gap-2 text-white/80">
@@ -62,13 +182,8 @@ const CVPage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
               >
-                <h2 className="text-2xl font-bold mb-4">Professional Summary</h2>
-                <p className="text-gray-700 leading-relaxed">
-                  Creative multimedia designer and recent Information Technology graduate specializing in 3D visualization, 
-                  video production, and graphic design. Proficient in industry-standard creative tools with a proven track 
-                  record of delivering engaging visual content. Combines technical expertise with artistic vision to create 
-                  compelling digital experiences that captivate audiences and elevate brands.
-                </p>
+                <h2 className="text-2xl font-bold mb-4">{t.title}</h2>
+                <p className="text-gray-700 leading-relaxed">{t.summary}</p>
               </motion.div>
             </div>
 
@@ -76,7 +191,7 @@ const CVPage = () => {
             <div className="p-8 border-b border-gray-100">
               <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
                 <Briefcase className="w-6 h-6 text-indigo-600" />
-                Professional Experience
+                {t.experience.title}
               </h2>
               <div className="space-y-6">
                 <motion.div
@@ -85,14 +200,13 @@ const CVPage = () => {
                   transition={{ duration: 0.6 }}
                 >
                   <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-lg font-semibold">Freelance Multimedia Designer</h3>
-                    <span className="text-sm text-gray-600">2021 - 2023</span>
+                    <h3 className="text-lg font-semibold">{t.experience.freelance.title}</h3>
+                    <span className="text-sm text-gray-600">{t.experience.freelance.period}</span>
                   </div>
                   <ul className="list-disc list-inside text-gray-700 space-y-2 ml-4">
-                    <li>Designed and produced visually compelling food packaging labels, enhancing brand visibility and market appeal</li>
-                    <li>Created engaging social media content that increased client engagement rates by 40%</li>
-                    <li>Developed custom invitation designs for various events, receiving consistent positive client feedback</li>
-                    <li>Executed promotional campaigns for herbal products, contributing to increased digital presence</li>
+                    {t.experience.freelance.achievements.map((achievement, index) => (
+                      <li key={index}>{achievement}</li>
+                    ))}
                   </ul>
                 </motion.div>
               </div>
@@ -102,7 +216,7 @@ const CVPage = () => {
             <div className="p-8 border-b border-gray-100">
               <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
                 <GraduationCap className="w-6 h-6 text-indigo-600" />
-                Education
+                {t.education.title}
               </h2>
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
@@ -110,14 +224,12 @@ const CVPage = () => {
                 transition={{ duration: 0.6 }}
               >
                 <div className="flex justify-between items-start mb-2">
-                  <h3 className="text-lg font-semibold">Bachelor's Degree in Information Technology</h3>
+                  <h3 className="text-lg font-semibold">{t.education.university.degree}</h3>
                   <span className="text-sm text-gray-600">2019 - 2023</span>
                 </div>
-                <p className="text-gray-700 mb-2">Amikom University Yogyakarta</p>
+                <p className="text-gray-700 mb-2">{t.education.university.school}</p>
                 <p className="text-gray-700 mb-2">GPA: 3.61</p>
-                <p className="text-gray-700 italic">
-                  Thesis: "3D Model Environment Design for the 3D Animation Film 'Unidentified Flying Object'"
-                </p>
+                <p className="text-gray-700 italic">{t.education.university.thesis}</p>
               </motion.div>
             </div>
 
@@ -125,7 +237,7 @@ const CVPage = () => {
             <div className="p-8 border-b border-gray-100">
               <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
                 <Award className="w-6 h-6 text-indigo-600" />
-                Notable Projects
+                {t.projects.title}
               </h2>
               <div className="space-y-6">
                 <motion.div
@@ -134,13 +246,13 @@ const CVPage = () => {
                   transition={{ duration: 0.6 }}
                 >
                   <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-lg font-semibold">3D Animated Short Film - IT Exhibition</h3>
-                    <span className="text-sm text-gray-600">2021 - 2022</span>
+                    <h3 className="text-lg font-semibold">{t.projects.film.title}</h3>
+                    <span className="text-sm text-gray-600">{t.projects.film.period}</span>
                   </div>
                   <ul className="list-disc list-inside text-gray-700 space-y-2 ml-4">
-                    <li>Developed detailed 3D environments using advanced modeling techniques</li>
-                    <li>Implemented complex texturing and lighting systems</li>
-                    <li>Managed complete production pipeline from concept to final render</li>
+                    {t.projects.film.details.map((detail, index) => (
+                      <li key={index}>{detail}</li>
+                    ))}
                   </ul>
                 </motion.div>
 
@@ -150,13 +262,13 @@ const CVPage = () => {
                   transition={{ duration: 0.6, delay: 0.2 }}
                 >
                   <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-lg font-semibold">Educational Content Creator</h3>
-                    <span className="text-sm text-gray-600">2024 - Present</span>
+                    <h3 className="text-lg font-semibold">{t.projects.content.title}</h3>
+                    <span className="text-sm text-gray-600">{t.projects.content.period}</span>
                   </div>
                   <ul className="list-disc list-inside text-gray-700 space-y-2 ml-4">
-                    <li>Create and edit educational video content</li>
-                    <li>Develop engaging narratives and visual storytelling</li>
-                    <li>Manage complete video production workflow</li>
+                    {t.projects.content.details.map((detail, index) => (
+                      <li key={index}>{detail}</li>
+                    ))}
                   </ul>
                 </motion.div>
               </div>
@@ -164,7 +276,7 @@ const CVPage = () => {
 
             {/* Skills Section */}
             <div className="p-8 border-b border-gray-100">
-              <h2 className="text-2xl font-bold mb-6">Technical Proficiency</h2>
+              <h2 className="text-2xl font-bold mb-6">{t.technical}</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {[
                   { name: "Adobe Premiere Pro", level: 95 },
@@ -202,19 +314,19 @@ const CVPage = () => {
             <div className="p-8">
               <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
                 <Globe2 className="w-5 h-5 text-indigo-600" />
-                Languages
+                {t.languages.title}
               </h2>
               <div className="space-y-3">
                 <div>
                   <div className="flex justify-between">
-                    <span className="text-gray-700">Indonesian</span>
-                    <span className="text-indigo-600">Native</span>
+                    <span className="text-gray-700">{t.languages.indonesian}</span>
+                    <span className="text-indigo-600">{t.languages.native}</span>
                   </div>
                 </div>
                 <div>
                   <div className="flex justify-between">
-                    <span className="text-gray-700">English</span>
-                    <span className="text-indigo-600">Intermediate</span>
+                    <span className="text-gray-700">{t.languages.english}</span>
+                    <span className="text-indigo-600">{t.languages.intermediate}</span>
                   </div>
                 </div>
               </div>
@@ -230,7 +342,7 @@ const CVPage = () => {
               className="btn-primary inline-flex items-center gap-2"
             >
               <Download className="w-5 h-5" />
-              Download CV
+              {t.downloadCV}
             </a>
           </div>
         </div>
