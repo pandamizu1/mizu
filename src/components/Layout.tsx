@@ -65,14 +65,10 @@ const Layout = () => {
               ))}
               <button
                 onClick={toggleLanguage}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg ${
-                  language === 'id'
-                    ? 'bg-gradient-to-r from-red-600 to-white text-white hover:from-red-700'
-                    : 'bg-gradient-to-r from-blue-600 to-red-600 text-white hover:from-blue-700 hover:to-red-700'
-                }`}
+                className="flex items-center gap-2 text-gray-700 hover:text-indigo-600 transition-colors duration-300"
               >
                 <Globe className="w-4 h-4" />
-                <span className="font-medium tracking-wide">{language.toUpperCase()}</span>
+                <span className="font-medium">{language === 'en' ? 'ID' : 'EN'}</span>
               </button>
             </nav>
 
@@ -107,11 +103,7 @@ const Layout = () => {
               ))}
               <button
                 onClick={toggleLanguage}
-                className={`flex items-center gap-2 w-full px-4 py-3 mt-4 rounded-lg transition-all duration-300 shadow-md ${
-                  language === 'id'
-                    ? 'bg-gradient-to-r from-red-600 to-white text-white hover:from-red-700'
-                    : 'bg-gradient-to-r from-blue-600 to-red-600 text-white hover:from-blue-700 hover:to-red-700'
-                }`}
+                className="flex items-center gap-2 py-2 text-gray-700 hover:text-indigo-600 transition-colors duration-300 w-full"
               >
                 <Globe className="w-5 h-5" />
                 <span className="font-medium">
@@ -131,5 +123,3 @@ const Layout = () => {
     </div>
   );
 };
-
-export default Layout;
