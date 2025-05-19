@@ -1,26 +1,43 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Box, VideoIcon, Instagram } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
+import { translations } from '../translations';
 
 const ServicesSection = () => {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   const services = [
     {
-      title: "3D Product Design",
+      title: language === 'en' ? "3D Product Design" : "Desain Produk 3D",
       icon: <Box className="h-8 w-8 text-indigo-600" />,
-      description: "High-quality 3D visualizations for products, packaging, and promotional materials with realistic materials and lighting.",
-      items: ["Product Visualization", "Packaging Design Mockups", "Concept Visualization", "Scene Mockups"]
+      description: language === 'en' 
+        ? "High-quality 3D visualizations for products, packaging, and promotional materials with realistic materials and lighting."
+        : "Visualisasi 3D berkualitas tinggi untuk produk, kemasan, dan materi promosi dengan material dan pencahayaan yang realistis.",
+      items: language === 'en' 
+        ? ["Product Visualization", "Packaging Design Mockups", "Concept Visualization", "Scene Mockups"]
+        : ["Visualisasi Produk", "Mockup Desain Kemasan", "Visualisasi Konsep", "Mockup Scene"]
     },
     {
-      title: "Video Editing",
+      title: language === 'en' ? "Video Editing" : "Pengeditan Video",
       icon: <VideoIcon className="h-8 w-8 text-indigo-600" />,
-      description: "Editing services for various types of videos, from short-form content to promotional and social media videos—optimized for engagement and clarity across digital platforms.",
-      items: ["Short-form Video Creation (Reels, Shorts, TikTok)", "Basic & Advanced Editings", "Simple Motion Graphics & Transitions", "Captions & Subtitles" , "Sound Effects & Music Sync" , "Thumbnail Creation"]
+      description: language === 'en'
+        ? "Editing services for various types of videos, from short-form content to promotional and social media videos—optimized for engagement and clarity across digital platforms."
+        : "Layanan pengeditan untuk berbagai jenis video, dari konten pendek hingga video promosi dan media sosial—dioptimalkan untuk keterlibatan dan kejelasan di seluruh platform digital.",
+      items: language === 'en'
+        ? ["Short-form Video Creation (Reels, Shorts, TikTok)", "Basic & Advanced Editings", "Simple Motion Graphics & Transitions", "Captions & Subtitles", "Sound Effects & Music Sync", "Thumbnail Creation"]
+        : ["Pembuatan Video Pendek (Reels, Shorts, TikTok)", "Pengeditan Dasar & Lanjutan", "Motion Graphics & Transisi Sederhana", "Teks & Subtitle", "Efek Suara & Sinkronisasi Musik", "Pembuatan Thumbnail"]
     },
     {
-      title: "Graphic Design",
+      title: language === 'en' ? "Graphic Design" : "Desain Grafis",
       icon: <Instagram className="h-8 w-8 text-indigo-600" />,
-      description: "Versatile graphic design services for both digital and print needs, tailored to enhance visual communication and branding.",
-      items: ["Social Media Posts", "Story Templates", "Promotional Banners", "Invitation Design"]
+      description: language === 'en'
+        ? "Versatile graphic design services for both digital and print needs, tailored to enhance visual communication and branding."
+        : "Layanan desain grafis yang serbaguna untuk kebutuhan digital dan cetak, disesuaikan untuk meningkatkan komunikasi visual dan branding.",
+      items: language === 'en'
+        ? ["Social Media Posts", "Story Templates", "Promotional Banners", "Invitation Design"]
+        : ["Postingan Media Sosial", "Template Story", "Banner Promosi", "Desain Undangan"]
     }
   ];
 
@@ -38,9 +55,9 @@ const ServicesSection = () => {
       <div className="section-container relative z-10">
         <div className="text-center mb-16">
           <span className="text-sm font-medium text-indigo-400 tracking-wider uppercase">
-            My Offerings
+            {t.services.subtitle}
           </span>
-          <h2 className="mt-2 text-3xl md:text-4xl font-bold">Services</h2>
+          <h2 className="mt-2 text-3xl md:text-4xl font-bold">{t.services.title}</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -71,9 +88,9 @@ const ServicesSection = () => {
         </div>
 
         <div className="text-center mt-16">
-          <h3 className="text-xl font-semibold mb-6">Ready to start your project?</h3>
+          <h3 className="text-xl font-semibold mb-6">{t.services.readyToStart}</h3>
           <Link to="/contact" className="btn-primary">
-            Contact Me
+            {t.services.contactMe}
           </Link>
         </div>
       </div>

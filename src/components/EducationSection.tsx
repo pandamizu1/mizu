@@ -1,20 +1,29 @@
 import { motion } from 'framer-motion';
 import { GraduationCap, Building2 } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const EducationSection = () => {
+  const { language } = useLanguage();
+
   const education = [
     {
       school: "UNIVERSITAS AMIKOM YOGYAKARTA",
       period: "2019 - 2023",
-      degree: "Bachelor's Degree in Information Technology",
-      description: "Focused on digital design, 3D modeling, and multimedia production with emphasis on industry-standard tools and techniques.",
+      degree: language === 'en' 
+        ? "Bachelor's Degree in Information Technology"
+        : "Sarjana Teknologi Informasi",
+      description: language === 'en'
+        ? "Focused on digital design, 3D modeling, and multimedia production with emphasis on industry-standard tools and techniques."
+        : "Fokus pada desain digital, pemodelan 3D, dan produksi multimedia dengan penekanan pada alat dan teknik standar industri.",
       logo: "https://blogarch.amikom.ac.id/2022/0419/20220419134746_hero.jpg"
     },
     {
       school: "SMAN 1 KUTOREJO",
       period: "2015 - 2018",
-      degree: "High School Diploma",
-      description: "Focused on natural sciences including Mathematics, Physics, Chemistry, and Biology.",
+      degree: language === 'en' ? "High School Diploma" : "Sekolah Menengah Atas",
+      description: language === 'en'
+        ? "Focused on natural sciences including Mathematics, Physics, Chemistry, and Biology."
+        : "Fokus pada ilmu pengetahuan alam termasuk Matematika, Fisika, Kimia, dan Biologi.",
       logo: "https://images.pexels.com/photos/5905445/pexels-photo-5905445.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
     }
   ];
@@ -24,9 +33,11 @@ const EducationSection = () => {
       <div className="section-container">
         <div className="text-center mb-16">
           <span className="text-sm font-medium text-indigo-600 tracking-wider uppercase">
-            Education
+            {language === 'en' ? 'Education' : 'Pendidikan'}
           </span>
-          <h2 className="mt-2 text-3xl md:text-4xl font-bold">Academic Background</h2>
+          <h2 className="mt-2 text-3xl md:text-4xl font-bold">
+            {language === 'en' ? 'Academic Background' : 'Latar Belakang Akademik'}
+          </h2>
         </div>
 
         <div className="max-w-4xl mx-auto space-y-8">
