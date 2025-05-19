@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
 import { Brain, Users, Lightbulb, Clock, Target, Puzzle } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const SkillsSection = () => {
+  const { language } = useLanguage();
+
   const hardSkills = [
     { name: "3D Modeling", level: 80},
     { name: "Video Editing", level: 90 },
@@ -14,33 +17,45 @@ const SkillsSection = () => {
   const softSkills = [
     {
       icon: <Target className="h-6 w-6 text-indigo-600" />,
-      name: "Problem Solving",
-      description: "Strong analytical thinking with the ability to solve complex design problems independently and efficiently"
+      name: language === 'en' ? "Problem Solving" : "Pemecahan Masalah",
+      description: language === 'en'
+        ? "Strong analytical thinking with the ability to solve complex design problems independently and efficiently"
+        : "Pemikiran analitis yang kuat dengan kemampuan memecahkan masalah desain yang kompleks secara mandiri dan efisien"
     },
     {
       icon: <Users className="h-6 w-6 text-indigo-600" />,
-      name: "Reliability",
-      description: "Completes tasks thoroughly and on time with minimal supervision"
+      name: language === 'en' ? "Reliability" : "Keandalan",
+      description: language === 'en'
+        ? "Completes tasks thoroughly and on time with minimal supervision"
+        : "Menyelesaikan tugas secara menyeluruh dan tepat waktu dengan pengawasan minimal"
     },
     {
       icon: <Clock className="h-6 w-6 text-indigo-600" />,
-      name: "Time Management",
-      description: "Effectively manages time to meet deadlines and maintain consistent productivity"
+      name: language === 'en' ? "Time Management" : "Manajemen Waktu",
+      description: language === 'en'
+        ? "Effectively manages time to meet deadlines and maintain consistent productivity"
+        : "Mengelola waktu secara efektif untuk memenuhi tenggat waktu dan menjaga produktivitas yang konsisten"
     },
     {
       icon: <Lightbulb className="h-6 w-6 text-indigo-600" />,
-      name: "Creativity",
-      description: "Resourceful in using design references and tools to produce visually appealing and effective outputs"
+      name: language === 'en' ? "Creativity" : "Kreativitas",
+      description: language === 'en'
+        ? "Resourceful in using design references and tools to produce visually appealing and effective outputs"
+        : "Kreatif dalam menggunakan referensi dan alat desain untuk menghasilkan output yang menarik secara visual dan efektif"
     },
     {
       icon: <Brain className="h-6 w-6 text-indigo-600" />,
-      name: "Adaptability",
-      description: "Quick learning and adaptation to new tools and trends"
+      name: language === 'en' ? "Adaptability" : "Adaptabilitas",
+      description: language === 'en'
+        ? "Quick learning and adaptation to new tools and trends"
+        : "Pembelajaran cepat dan adaptasi terhadap alat dan tren baru"
     },
     {
       icon: <Puzzle className="h-6 w-6 text-indigo-600" />,
-      name: "Self-awareness",
-      description: "Recognizes strengths and weaknesses, actively seeks feedback, and reflects to improve performance"
+      name: language === 'en' ? "Self-awareness" : "Kesadaran Diri",
+      description: language === 'en'
+        ? "Recognizes strengths and weaknesses, actively seeks feedback, and reflects to improve performance"
+        : "Mengenali kekuatan dan kelemahan, aktif mencari umpan balik, dan melakukan refleksi untuk meningkatkan kinerja"
     }
   ];
 
@@ -70,9 +85,11 @@ const SkillsSection = () => {
       <div className="section-container">
         <div className="text-center mb-16">
           <span className="text-sm font-medium text-indigo-400 tracking-wider uppercase">
-            My Skills
+            {language === 'en' ? 'My Skills' : 'Keahlian Saya'}
           </span>
-          <h2 className="mt-2 text-3xl md:text-4xl font-bold">Skills & Expertise</h2>
+          <h2 className="mt-2 text-3xl md:text-4xl font-bold">
+            {language === 'en' ? 'Skills & Expertise' : 'Keahlian & Ketrampilan'}
+          </h2>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -84,7 +101,9 @@ const SkillsSection = () => {
             viewport={{ once: true, amount: 0.2 }}
             className="space-y-6"
           >
-            <h3 className="text-2xl font-semibold mb-8">Technical Skills</h3>
+            <h3 className="text-2xl font-semibold mb-8">
+              {language === 'en' ? 'Technical Skills' : 'Keahlian Teknis'}
+            </h3>
             {hardSkills.map((skill, index) => (
               <motion.div
                 key={index}
@@ -116,7 +135,9 @@ const SkillsSection = () => {
             viewport={{ once: true }}
             className="space-y-6"
           >
-            <h3 className="text-2xl font-semibold mb-8">Soft Skills</h3>
+            <h3 className="text-2xl font-semibold mb-8">
+              {language === 'en' ? 'Soft Skills' : 'Keahlian Non-Teknis'}
+            </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {softSkills.map((skill, index) => (
                 <motion.div
