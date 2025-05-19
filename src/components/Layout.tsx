@@ -65,14 +65,14 @@ const Layout = () => {
               ))}
               <button
                 onClick={toggleLanguage}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 ${
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg ${
                   language === 'id'
-                    ? 'bg-gradient-to-r from-red-500 to-white text-white hover:from-red-600 hover:to-gray-100'
-                    : 'bg-gradient-to-r from-blue-500 to-red-500 text-white hover:from-blue-600 hover:to-red-600'
+                    ? 'bg-gradient-to-r from-red-600 to-white text-white hover:from-red-700'
+                    : 'bg-gradient-to-r from-blue-600 to-red-600 text-white hover:from-blue-700 hover:to-red-700'
                 }`}
               >
                 <Globe className="w-4 h-4" />
-                <span className="font-medium">{language.toUpperCase()}</span>
+                <span className="font-medium tracking-wide">{language.toUpperCase()}</span>
               </button>
             </nav>
 
@@ -107,15 +107,15 @@ const Layout = () => {
               ))}
               <button
                 onClick={toggleLanguage}
-                className={`flex items-center gap-2 w-full px-4 py-2 mt-4 rounded-lg transition-all duration-300 ${
+                className={`flex items-center gap-2 w-full px-4 py-3 mt-4 rounded-lg transition-all duration-300 shadow-md ${
                   language === 'id'
-                    ? 'bg-gradient-to-r from-red-500 to-white text-white hover:from-red-600 hover:to-gray-100'
-                    : 'bg-gradient-to-r from-blue-500 to-red-500 text-white hover:from-blue-600 hover:to-red-600'
+                    ? 'bg-gradient-to-r from-red-600 to-white text-white hover:from-red-700'
+                    : 'bg-gradient-to-r from-blue-600 to-red-600 text-white hover:from-blue-700 hover:to-red-700'
                 }`}
               >
-                <Globe className="w-4 h-4" />
+                <Globe className="w-5 h-5" />
                 <span className="font-medium">
-                  {language === 'en' ? 'Switch to Indonesian' : 'Ganti ke Bahasa Inggris'}
+                  {language === 'en' ? 'Ganti ke Bahasa Indonesia' : 'Switch to English'}
                 </span>
               </button>
             </div>
