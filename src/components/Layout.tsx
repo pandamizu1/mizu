@@ -2,11 +2,14 @@ import { useState, useEffect } from 'react';
 import { Outlet, NavLink, Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import Footer from './Footer';
+import { useLanguage } from '../contexts/LanguageContext';
+import { translations } from '../translations';
 
 const Layout = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const { language, setLanguage } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,11 +25,15 @@ const Layout = () => {
   }, [location]);
 
   const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Portfolio', path: '/portfolio' },
-    { name: 'CV', path: '/cv' },
-    { name: 'Contact', path: '/contact' },
+    { name: translations[language].nav.home, path: '/' },
+    { name: translations[language].nav.portfolio, path: '/portfolio' },
+    { name: translations[language].nav.cv, path: '/cv' },
+    { name: translations[language].nav.contact, path: '/contact' },
   ];
+
+  const toggleLanguage = () => {
+    setLanguage(language === 'en' ? 'id' : 'en');
+  };
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -56,9 +63,12 @@ const Layout = () => {
                   {link.name}
                 </NavLink>
               ))}
-              <Link to="/contact" className="btn-primary py-2 text-sm">
-                Get in Touch
-              </Link>
+              <button
+                onClick={toggleLanguage}
+                className="px-3 py-1 rounded-md bg-gray-100 hover:bg-gray-200 transition-colors text-sm font-medium"
+              >
+                {language.toUpperCase()}
+              </button>
             </nav>
 
             {/* Mobile menu button */}
@@ -90,12 +100,12 @@ const Layout = () => {
                   {link.name}
                 </NavLink>
               ))}
-              <Link 
-                to="/contact" 
-                className="block py-2 mt-4 w-full text-center btn-primary"
+              <button
+                onClick={toggleLanguage}
+                className="block w-full text-left py-2 mt-4 text-gray-700"
               >
-                Get in Touch
-              </Link>
+                {language === 'en' ? 'Switch to Indonesian' : 'Ganti ke Bahasa Inggris'}
+              </button>
             </div>
           </div>
         )}
