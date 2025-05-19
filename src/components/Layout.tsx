@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Outlet, NavLink, Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
 import Footer from './Footer';
 import { useLanguage } from '../contexts/LanguageContext';
 import { translations } from '../translations';
@@ -65,9 +65,14 @@ const Layout = () => {
               ))}
               <button
                 onClick={toggleLanguage}
-                className="px-3 py-1 rounded-md bg-gray-100 hover:bg-gray-200 transition-colors text-sm font-medium"
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 ${
+                  language === 'id'
+                    ? 'bg-gradient-to-r from-red-500 to-white text-white hover:from-red-600 hover:to-gray-100'
+                    : 'bg-gradient-to-r from-blue-500 to-red-500 text-white hover:from-blue-600 hover:to-red-600'
+                }`}
               >
-                {language.toUpperCase()}
+                <Globe className="w-4 h-4" />
+                <span className="font-medium">{language.toUpperCase()}</span>
               </button>
             </nav>
 
@@ -102,9 +107,16 @@ const Layout = () => {
               ))}
               <button
                 onClick={toggleLanguage}
-                className="block w-full text-left py-2 mt-4 text-gray-700"
+                className={`flex items-center gap-2 w-full px-4 py-2 mt-4 rounded-lg transition-all duration-300 ${
+                  language === 'id'
+                    ? 'bg-gradient-to-r from-red-500 to-white text-white hover:from-red-600 hover:to-gray-100'
+                    : 'bg-gradient-to-r from-blue-500 to-red-500 text-white hover:from-blue-600 hover:to-red-600'
+                }`}
               >
-                {language === 'en' ? 'Switch to Indonesian' : 'Ganti ke Bahasa Inggris'}
+                <Globe className="w-4 h-4" />
+                <span className="font-medium">
+                  {language === 'en' ? 'Switch to Indonesian' : 'Ganti ke Bahasa Inggris'}
+                </span>
               </button>
             </div>
           </div>
