@@ -68,7 +68,7 @@ const Layout = () => {
                 className="flex items-center gap-2 text-gray-700 hover:text-indigo-600 transition-colors duration-300"
               >
                 <Globe className="w-4 h-4" />
-                <span className="font-medium">{language === 'en' ? 'ID' : 'EN'}</span>
+                <span className="font-medium">{language === 'en' ? 'EN' : 'ID'}</span>
               </button>
             </nav>
 
