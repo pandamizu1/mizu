@@ -17,14 +17,26 @@ const ContactPage = () => {
 
   return (
     <div className="min-h-screen pt-12">
-      <div className="relative h-[60vh] flex items-center main-gradient">
-        <div className="section-container text-white">
+      {/* Hero Section with improved background */}
+      <div className="relative h-[60vh] flex items-center overflow-hidden">
+        {/* Animated gradient background */}
+        <div className="absolute inset-0 main-gradient"></div>
+        
+        {/* Animated shapes */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute w-64 h-64 -top-32 -left-32 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute w-96 h-96 -bottom-48 -right-48 bg-indigo-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute w-64 h-64 top-1/2 left-1/4 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-500"></div>
+        </div>
+
+        {/* Content */}
+        <div className="section-container relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">{t.contact.title}</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">{t.contact.title}</h1>
             <p className="text-xl text-white/80 max-w-2xl">
               {t.contact.subtitle}
             </p>
@@ -32,19 +44,24 @@ const ContactPage = () => {
         </div>
       </div>
 
-      <div className="section-container py-20 -mt-2 bg-gray-900">
+      <div className="section-container py-20 -mt-2 bg-gradient-to-b from-gray-900 to-gray-800">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="max-w-4xl mx-auto"
         >
-          <div className="glassmorphism rounded-2xl p-8 md:p-12 shadow-xl">
-            <div className="space-y-8">
+          <div className="glassmorphism rounded-2xl p-8 md:p-12 shadow-xl relative overflow-hidden">
+            {/* Background pattern */}
+            <div className="absolute inset-0 opacity-5">
+              <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,white_25%,white_50%,transparent_50%,transparent_75%,white_75%,white_100%)] bg-[length:20px_20px]"></div>
+            </div>
+
+            <div className="space-y-8 relative z-10">
               <div>
                 <h2 className="text-2xl font-bold mb-6 text-white">{t.contact.connect}</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="flex items-center p-4 bg-white/10 rounded-xl">
+                  <div className="flex items-center p-4 bg-white/10 rounded-xl backdrop-blur-sm hover:bg-white/20 transition-colors">
                     <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mr-4">
                       <Mail className="h-6 w-6 text-white" />
                     </div>
@@ -72,7 +89,7 @@ const ContactPage = () => {
                     href="https://wa.me/6287737783462"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-colors"
+                    className="flex items-center p-4 bg-white/10 rounded-xl backdrop-blur-sm hover:bg-white/20 transition-colors"
                   >
                     <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mr-4">
                       <MessageSquare className="h-6 w-6 text-white" />
@@ -110,9 +127,9 @@ const ContactPage = () => {
                     href="https://www.instagram.com/pandapediahome?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="flex items-center p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-colors"
+                    className="flex items-center p-4 bg-white/10 rounded-xl backdrop-blur-sm hover:bg-white/20 transition-colors group"
                   >
-                    <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-3">
+                    <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-3 group-hover:bg-white/30 transition-colors">
                       <Instagram className="h-5 w-5 text-white" />
                     </div>
                     <span className="text-white">Instagram</span>
@@ -122,9 +139,9 @@ const ContactPage = () => {
                     href="https://www.linkedin.com/in/pandu-tirta-buana/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-colors"
+                    className="flex items-center p-4 bg-white/10 rounded-xl backdrop-blur-sm hover:bg-white/20 transition-colors group"
                   >
-                    <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-3">
+                    <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-3 group-hover:bg-white/30 transition-colors">
                       <Linkedin className="h-5 w-5 text-white" />
                     </div>
                     <span className="text-white">LinkedIn</span>
@@ -134,9 +151,9 @@ const ContactPage = () => {
                     href="https://www.behance.net/koalagraphic"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-colors"
+                    className="flex items-center p-4 bg-white/10 rounded-xl backdrop-blur-sm hover:bg-white/20 transition-colors group"
                   >
-                    <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-3">
+                    <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-3 group-hover:bg-white/30 transition-colors">
                       <Behance className="h-5 w-5 text-white" />
                     </div>
                     <span className="text-white">Behance</span>
@@ -146,9 +163,9 @@ const ContactPage = () => {
                     href="https://x.com/mizuevren"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-colors"
+                    className="flex items-center p-4 bg-white/10 rounded-xl backdrop-blur-sm hover:bg-white/20 transition-colors group"
                   >
-                    <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-3">
+                    <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-3 group-hover:bg-white/30 transition-colors">
                       <Twitter className="h-5 w-5 text-white" />
                     </div>
                     <span className="text-white">Twitter</span>
@@ -158,9 +175,9 @@ const ContactPage = () => {
                     href="https://youtube.com/@mizuevren?si=TcLfezCbzpSqVJEE"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-colors"
+                    className="flex items-center p-4 bg-white/10 rounded-xl backdrop-blur-sm hover:bg-white/20 transition-colors group"
                   >
-                    <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-3">
+                    <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-3 group-hover:bg-white/30 transition-colors">
                       <Youtube className="h-5 w-5 text-white" />
                     </div>
                     <span className="text-white">YouTube</span>
@@ -170,9 +187,9 @@ const ContactPage = () => {
                     href="https://linktr.ee/pandapedia"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-colors"
+                    className="flex items-center p-4 bg-white/10 rounded-xl backdrop-blur-sm hover:bg-white/20 transition-colors group"
                   >
-                    <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-3">
+                    <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-3 group-hover:bg-white/30 transition-colors">
                       <LinkIcon className="h-5 w-5 text-white" />
                     </div>
                     <span className="text-white">Linktree</span>
